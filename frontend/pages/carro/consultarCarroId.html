@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstacionAqui - Consulta</title>
+
+    <!--Meus CSS e JS-->
     <link rel="stylesheet" type="text/css" href="/frontend/css/style.css" />
     <script type="text/javascript" src="/frontend/js/carroRequests.js"></script>
-    <title>EstacionAqui - Consulta</title>
 </head>
 
 <body>
-    <div class="navbar">
+    <header class="navbar">
         <a href="/frontend/index.html">Página Inicial</a>
         <div class="dropdown">
             <button class="dropbtn">Carros</button>
@@ -37,23 +39,25 @@
                 <a href="/frontend/pages/estacionamento/apagarEstacionamento.html">Apagar estacionamento do sistema</a>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div id="header">
+    <section id="header">
         <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
         <h1 id="description">Consulta de Veículos</h1>
         <p>Informe o ID do veículo que deseja procurar abaixo!</p>
         <hr />
-    </div>
+    </section>
 
-    <div class="secaoConsulta">
-        <input type="number" placeholder="ID do veículo" name="idCarro" id="idPesquisaCarro" required>
-        <button type="button" onclick="criarTabelaCarroId()">Pesquisar</button>
-    </div>
-
-    <div>
+    <section class="formularioPaginas">
+        <form onsubmit="criarTabelaCarroId()">
+            <input type="number" placeholder="ID do veículo" name="idCarro" id="idPesquisaCarro" required>
+            <button type="submit">Pesquisar</button>
+        </form>
+    </section>
+  
+    <section>
         <table id="tabelaCarroId" class="tabelasConsulta"></table>
-    </div>
+    </section>
 
     <footer>
         <p>Desafio Sprint 9 - Pablo Ryan - 2022</p>

@@ -69,6 +69,7 @@
 /*================================================*/
 
 /* Classes */
+
 .tabelasConsulta {
   margin-left: auto;
   margin-right: auto;
@@ -80,12 +81,8 @@
   margin-bottom: 0.5em;
 }
 
-.secaoConsulta {
-  width: 100%;
-}
-
-.formularioCadastro label,
-.formularioCadastro input {
+.formularioPaginas label,
+.formularioPaginas  input {
   font-size: 1.2em;
   width: 98%;
   padding: 0.5em;
@@ -93,18 +90,18 @@
   border: none;
 }
 
-.formularioCadastro input:focus {
+.formularioPaginas  input:focus {
   background-color: aliceblue;
 }
 
-.formularioCadastro select {
+.formularioPaginas  select {
   font-size: 20px;
   margin: 5px 0 22px 0;
   padding: 0.2em;
   width: 25%;
 }
 
-.formularioCadastro button {
+.formularioPaginas  button {
   width: 20%;
   font-size: 1em;
   padding: 4px;
