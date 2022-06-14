@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="navbar">
+    <header class="navbar">
         <a href="/frontend/index.html">Página Inicial</a>
         <div class="dropdown">
             <button class="dropbtn">Carros</button>
@@ -38,36 +38,35 @@
                 <a href="/frontend/pages/estacionamento/apagarEstacionamento.html">Apagar estacionamento do sistema</a>
             </div>
         </div>
-    </div>
-    <div>
-        <div id="header">
-            <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
-            <h1 id="description">Cadastro de Veículos</h1>
-            <p>Preencha o formulário abaixo e estacione seu carro com a gente!</p>
-            <hr />
-        </div>
+    </header>
 
-        <div>
-            <form onsubmit="salvarCarro()" id="formularioCarro">
-                <label for="cor">Cor: </label>
-                <input id="cor" type="text" name="cor" placeholder="Cor do seu carro" required />
+    <section id="header">
+        <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
+        <h1 id="description">Cadastro de Veículos</h1>
+        <p>Preencha o formulário abaixo e estacione seu carro com a gente!</p>
+        <hr />
+    </section>
 
-                <label for="placa">Placa: </label>
-                <input id="placa" type="text" name="placa" placeholder="Placa do seu carro" required />
+    <section class="formularioCadastro">
+        <form onsubmit="salvarCarro()" id="formularioCarro">
+            <label for="cor">Cor: </label>
+            <input id="cor" type="text" name="cor" placeholder="Cor do seu carro" required />
 
-                <label for="velocidademax">Velocidade Máxima: </label>
-                <input id="velocidademax" type="number" name="velocidademax" placeholder="Velocidade do seu carro"
-                    maxlength="3" required />
+            <label for="placa">Placa: </label>
+            <input id="placa" type="text" name="placa" placeholder="Placa do seu carro" required />
 
-                <label for="estacionamento_id">Qual estacionamento deseja utilizar:</label>
-                <select id="estacionamento_id" name="estacionamento_id">
-                    <script>criarSelectCarro()</script>
-                </select>
-                <br />
-                <button type="submit">Cadastrar</button>
-            </form>
-        </div>
-    </div>
+            <label for="velocidademax">Velocidade Máxima: </label>
+            <input id="velocidademax" type="number" name="velocidademax" placeholder="Velocidade do seu carro"
+                maxlength="3" required />
+
+            <label for="estacionamento_id">Qual estacionamento deseja utilizar:</label>
+            <select id="estacionamento_id" name="estacionamento_id">
+                <script>criarSelectCarro()</script>
+            </select>
+            <br />
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
 
     <footer>
         <p>Desafio Sprint 9 - Pablo Ryan - 2022</p>

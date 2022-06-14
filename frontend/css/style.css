@@ -84,6 +84,33 @@
   width: 100%;
 }
 
+.formularioCadastro label,
+.formularioCadastro input {
+  font-size: 20px;
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 22px 0;
+  border: none;
+}
+
+.formularioCadastro input:focus {
+  background-color: aliceblue;
+}
+
+.formularioCadastro select {
+  font-size: 20px;
+  margin: 5px 0 22px 0;
+  padding: 4px;
+  width: 25%;
+}
+
+.formularioCadastro button {
+  width: 20%;
+  font-size: 18px;
+  padding: 4px;
+  margin-bottom: 12px;
+}
+
 /* Ids */
 #paginacao {
   display: flex;
@@ -96,12 +123,10 @@
   font-size: 1.2em;
   margin-left: 1em;
   margin-right: 1em;
-  
+
 }
 
 #paginacao button {
-  width: 10em;
-  height: 2em;
   background: none;
   border: none;
   color: blue;
@@ -146,38 +171,10 @@
 
 /* Tags globais */
 body {
-  padding: 1em;
   background-color: azure;
 }
 
-label,
-input {
-  font-size: 20px;
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0 22px 0;
-  border: none;
-}
-
-input:focus {
-  background-color: aliceblue;
-}
-
-select {
-  font-size: 20px;
-  margin: 5px 0 22px 0;
-  padding: 4px;
-  width: 25%;
-}
-
 hr {
-  margin-bottom: 12px;
-}
-
-button {
-  width: 20%;
-  font-size: 18px;
-  padding: 4px;
   margin-bottom: 12px;
 }
 
