@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/frontend/css/style.css" />
+    <script type="text/javascript" src="/frontend/js/carroRequests.js"></script>
+    <title>EstacionAqui - Apagar</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="/frontend/index.html">Página Inicial</a>
+        <div class="dropdown">
+            <button class="dropbtn">Carros</button>
+            <div class="dropdown-content">
+                <a href="/frontend/pages/carro/cadastrarCarro.html">Cadastrar carro</a>
+                <a href="/frontend/pages/carro/consultaCarros.html">Consultar carros cadastrados</a>
+                <a href="/frontend/pages/carro/consultarCarroId.html">Consultar carro por ID</a>
+                <a href="/frontend/pages/carro/atualizarCarro.html">Atualizar carro do sistema</a>
+                <a href="/frontend/pages/carro/apagarCarro.html">Apagar carro do sistema</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Estacionamentos</button>
+            <div class="dropdown-content">
+                <a href="/frontend/pages/estacionamento/cadastrarEstacionamento.html">Cadastrar estacionamento</a>
+                <a href="/frontend/pages/estacionamento/consultaEstacionamentos.html">Consultar estacionamentos
+                    cadastrados</a>
+                <a href="/frontend/pages/estacionamento/consultaEstacionamentoId.html">Consultar estacionamento por
+                    ID</a>
+                <a href="/frontend/pages/estacionamento/atualizarEstacionamento.html">Atualizar estacionamento do
+                    sistema</a>
+                <a href="/frontend/pages/estacionamento/apagarEstacionamento.html">Apagar estacionamento do sistema</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="header">
+        <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
+        <h1 id="description">Remoção de Veículos</h1>
+        <p>Informe o ID do veículo que deseja remover do nosso banco abaixo!</p>
+        <hr />
+    </div>
+
+    <div class="secaoConsulta">
+        <input type="number" placeholder="ID do veículo" name="idCarro" id="idPesquisaCarro" required>
+        <button type="button" onclick="apagarCarro()">APAGAR</button>
+    </div>
+
+    <footer>
+        <p>Desafio Sprint 9 - Pablo Ryan - 2022</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/frontend/css/style.css" />
+    <script type="text/javascript" src="/frontend/js/carroRequests.js"></script>
+
+    <title>EstacionAqui - Cadastro</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="/frontend/index.html">Página Inicial</a>
+        <div class="dropdown">
+            <button class="dropbtn">Carros</button>
+            <div class="dropdown-content">
+                <a href="/frontend/pages/carro/cadastrarCarro.html">Cadastrar carro</a>
+                <a href="/frontend/pages/carro/consultaCarros.html">Consultar carros cadastrados</a>
+                <a href="/frontend/pages/carro/consultarCarroId.html">Consultar carro por ID</a>
+                <a href="/frontend/pages/carro/atualizarCarro.html">Atualizar carro do sistema</a>
+                <a href="/frontend/pages/carro/apagarCarro.html">Apagar carro do sistema</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Estacionamentos</button>
+            <div class="dropdown-content">
+                <a href="/frontend/pages/estacionamento/cadastrarEstacionamento.html">Cadastrar estacionamento</a>
+                <a href="/frontend/pages/estacionamento/consultaEstacionamentos.html">Consultar estacionamentos
+                    cadastrados</a>
+                <a href="/frontend/pages/estacionamento/consultaEstacionamentoId.html">Consultar estacionamento por
+                    ID</a>
+                <a href="/frontend/pages/estacionamento/atualizarEstacionamento.html">Atualizar estacionamento do
+                    sistema</a>
+                <a href="/frontend/pages/estacionamento/apagarEstacionamento.html">Apagar estacionamento do sistema</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div id="header">
+            <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
+            <h1 id="description">Cadastro de Veículos</h1>
+            <p>Preencha o formulário abaixo e estacione seu carro com a gente!</p>
+            <hr />
+        </div>
+
+        <div>
+            <form onsubmit="salvarCarro()" id="formularioCarro">
+                <label for="cor">Cor: </label>
+                <input id="cor" type="text" name="cor" placeholder="Cor do seu carro" required />
+
+                <label for="placa">Placa: </label>
+                <input id="placa" type="text" name="placa" placeholder="Placa do seu carro" required />
+
+                <label for="velocidademax">Velocidade Máxima: </label>
+                <input id="velocidademax" type="number" name="velocidademax" placeholder="Velocidade do seu carro"
+                    maxlength="3" required />
+
+                <label for="estacionamento_id">Qual estacionamento deseja utilizar:</label>
+                <select id="estacionamento_id" name="estacionamento_id">
+                    <script>criarSelectCarro()</script>
+                </select>
+                <br />
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>Desafio Sprint 9 - Pablo Ryan - 2022</p>
+    </footer>
+</body>
+
+</html>
