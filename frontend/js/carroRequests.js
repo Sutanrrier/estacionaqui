@@ -3,7 +3,7 @@ const myHeaders = new Headers();
 myHeaders.append("Content-type", "application/json; charset=UTF-8");
 
 let paginaAtual = 1;
-let paginaFinal = paginaAtual+1;
+let paginaFinal = paginaAtual + 1;
 
 const linhasPorPagina = 5; //Define quantas linhas haverá por página de consulta
 
@@ -31,7 +31,7 @@ function criarSelectCarro() {
 
 //Função para passar a próxima página da tabela
 function proximaPagina() {
-    if(paginaAtual < paginaFinal){
+    if (paginaAtual < paginaFinal) {
         let tabela = document.getElementById("tabelaCarros");
         tabela.innerText = "";
         let pagina = document.getElementById("numeroPagina").innerText;
@@ -44,7 +44,7 @@ function proximaPagina() {
 
 //Função para voltar a página anterior da tabela
 function anteriorPagina() {
-    if(paginaAtual > 1){
+    if (paginaAtual > 1) {
         let tabela = document.getElementById("tabelaCarros");
         tabela.innerText = "";
         let pagina = document.getElementById("numeroPagina").innerText;
@@ -130,11 +130,11 @@ function criarTabelaCarro() {
                 let maxLinhas = paginaAtual * linhasPorPagina;
 
                 for (let i = (paginaAtual * linhasPorPagina) - linhasPorPagina; i < maxLinhas; i++) {
-                    if(data[i] != null){
+                    if (data[i] != null) {
                         const linha = criaLinhaTabela(data[i]);
                         tabela.appendChild(linha);
-                    } 
-                    else{
+                    }
+                    else {
                         paginaFinal = paginaAtual;
                         break;
                     }
@@ -145,25 +145,32 @@ function criarTabelaCarro() {
 //GET - Retorna um carro dentro do banco a partir de um ID e gera uma tabela com o JSON de resposta
 function criarTabelaCarroId() {
     const tabela = document.getElementById("tabelaCarroId");
+    tabela.innerText = "";
+
     const idCarro = document.getElementById("idPesquisaCarro").value;
 
-    const cabecalho = criaCabecalhoTabela();
-    tabela.appendChild(cabecalho);
+    if (idCarro != "") {
+        const url = `http://localhost:8080/carros/${idCarro}`;
+        const options = {
+            method: "GET",
+            mode: "cors",
+            cache: "default"
+        }
 
-    const url = `http://localhost:8080/carros/${idCarro}`;
-    const options = {
-        method: "GET",
-        mode: "cors",
-        cache: "default"
+        fetch(url, options)
+            .then(response => response.json()
+                .then(data => {
+                    const cabecalho = criaCabecalhoTabela();
+                    tabela.appendChild(cabecalho);
+
+                    let linha = criaLinhaTabela(data);
+                    tabela.appendChild(linha)
+                }))
+            .catch(() => alert("Erro! -> Este ID não existe no banco de dados"));
     }
-
-    fetch(url, options)
-        .then(response => response.json()
-            .then(data => {
-                let linha = criaLinhaTabela(data);
-                tabela.appendChild(linha)
-            }));
-
+    else {
+        alert("Erro! -> ID não foi informado!");
+    }
 }
 
 //POST - Gera um JSON com os campos do formulario e envia como body da requisição para cadastrar um carro
