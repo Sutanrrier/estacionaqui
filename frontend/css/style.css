@@ -86,10 +86,10 @@
 
 .formularioCadastro label,
 .formularioCadastro input {
-  font-size: 20px;
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0 22px 0;
+  font-size: 1.2em;
+  width: 98%;
+  padding: 0.5em;
+  margin: 0px 0 22px 0;
   border: none;
 }
 
@@ -100,13 +100,13 @@
 .formularioCadastro select {
   font-size: 20px;
   margin: 5px 0 22px 0;
-  padding: 4px;
+  padding: 0.2em;
   width: 25%;
 }
 
 .formularioCadastro button {
   width: 20%;
-  font-size: 18px;
+  font-size: 1em;
   padding: 4px;
   margin-bottom: 12px;
 }
@@ -132,11 +132,11 @@
   color: blue;
   text-decoration: none;
   cursor: pointer;
+  font-size: 2em;
 }
 
 #paginacao button:hover {
   color: aqua;
-  background: darkgrey;
 }
 
 #tabelaCarros,
