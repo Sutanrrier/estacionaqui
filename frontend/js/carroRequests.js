@@ -5,6 +5,8 @@ myHeaders.append("Content-type", "application/json; charset=UTF-8");
 let paginaAtual = 1;
 let paginaFinal = paginaAtual+1;
 
+const linhasPorPagina = 5; //Define quantas linhas haverá por página de consulta
+
 //Cria o Select dinâmico com as opções de estacionamento disponíveis no banco
 function criarSelectCarro() {
     const select = document.getElementById("estacionamento_id");
@@ -123,9 +125,9 @@ function criarTabelaCarro() {
                 const cabecalho = criaCabecalhoTabela();
                 tabela.appendChild(cabecalho);
 
-                let maxLinhas = paginaAtual * 5;
+                let maxLinhas = paginaAtual * linhasPorPagina;
 
-                for (let i = (paginaAtual * 5) - 5; i < maxLinhas; i++) {
+                for (let i = (paginaAtual * linhasPorPagina) - linhasPorPagina; i < maxLinhas; i++) {
                     if(data[i] != null){
                         const linha = criaLinhaTabela(data[i]);
                         tabela.appendChild(linha);
