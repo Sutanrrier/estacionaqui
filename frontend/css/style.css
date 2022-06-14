@@ -9,7 +9,7 @@
 /* Links inside the navbar */
 .navbar a {
   float: left;
-  font-size: 16px;
+  font-size: 1em;
   color: white;
   text-align: center;
   padding: 14px 16px;
@@ -76,8 +76,8 @@
   text-align: center;
   line-height: 2em;
   font-size: 1.1em;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
 }
 
 .secaoConsulta {
@@ -112,13 +112,6 @@
 }
 
 /* Ids */
-#paginacao {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
 #pagSpan {
   font-size: 1.2em;
   margin-left: 1em;
@@ -126,15 +119,20 @@
 
 }
 
+#paginacao {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 #paginacao button {
   background: none;
   border: none;
   color: blue;
-  text-decoration: none;
   cursor: pointer;
   font-size: 2em;
 }
-
 #paginacao button:hover {
   color: aqua;
 }
@@ -174,21 +172,11 @@ body {
   background-color: azure;
 }
 
-hr {
-  margin-bottom: 12px;
-}
-
 table,
 td,
 th {
   border: 1px solid black;
 }
-
 th {
   background-color: lightcyan;
-}
-
-footer {
-  margin-top: 1em;
-  text-align: right;
 }
