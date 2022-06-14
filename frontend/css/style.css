@@ -67,8 +67,7 @@
 }
 
 /*================================================*/
-
-/* Classes */
+/* Classes da Tabela */
 
 .tabelasConsulta {
   margin-left: auto;
@@ -80,6 +79,31 @@
   margin-top: 1em;
   margin-bottom: 0.5em;
 }
+
+.tabelasConsulta table,
+.tabelasConsulta td,
+.tabelasConsulta th {
+  border: 1px solid black;
+}
+.tabelasConsulta th {
+  background-color: lightcyan;
+}
+
+.tabelasConsulta td button{
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  background: none;
+  border: none;
+  color: blue;
+}
+
+.tabelasConsulta td button:hover{
+  color: black;
+  cursor: pointer;
+}
+
+/*================================================*/
+/* Classes do Formulário */
 
 .formularioPaginas label,
 .formularioPaginas  input {
@@ -107,8 +131,9 @@
   padding: 4px;
   margin-bottom: 12px;
 }
-
+/*================================================*/
 /* Ids */
+
 #pagSpan {
   font-size: 1.2em;
   margin-left: 1em;
@@ -127,11 +152,11 @@
   background: none;
   border: none;
   color: blue;
-  cursor: pointer;
   font-size: 2em;
 }
 #paginacao button:hover {
-  color: aqua;
+  cursor: pointer;
+  color: black;
 }
 
 #tabelaCarros,
@@ -167,13 +192,4 @@
 /* Tags globais */
 body {
   background-color: azure;
-}
-
-table,
-td,
-th {
-  border: 1px solid black;
-}
-th {
-  background-color: lightcyan;
 }

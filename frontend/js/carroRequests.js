@@ -64,6 +64,7 @@ function criaCabecalhoTabela() {
     let colunaPlaca = document.createElement("th");
     let colunaVelocidade = document.createElement("th");
     let colunaEstacionamento = document.createElement("th");
+    let colunaOptions = document.createElement("th");
 
     //Injetando informação nas colunas da linha
     colunaId.innerHTML = "ID";
@@ -71,6 +72,7 @@ function criaCabecalhoTabela() {
     colunaPlaca.innerHTML = "PLACA";
     colunaVelocidade.innerHTML = "VELOCIDADE MÁX.";
     colunaEstacionamento.innerHTML = "ESTACIONADO EM";
+    colunaOptions.innerHTML = "OPÇÕES";
 
     //Colocando as colunas dentro da linha
     linha.appendChild(colunaId);
@@ -78,6 +80,7 @@ function criaCabecalhoTabela() {
     linha.appendChild(colunaPlaca);
     linha.appendChild(colunaVelocidade);
     linha.appendChild(colunaEstacionamento);
+    linha.appendChild(colunaOptions);
 
     return linha;
 }
@@ -93,12 +96,35 @@ function criaLinhaTabela(objeto) {
     let colunaVelocidade = document.createElement("td");
     let colunaEstacionamento = document.createElement("td");
 
-    //Injetando informação nas colunas da linha
+    let colunaOptions = document.createElement("td");
+    
+    let optionAtualizar = document.createElement("button");
+    let optionVisualizar = document.createElement("button");
+    let optionRemover = document.createElement("button");
+    
+    //Injetando informação do objeto nas colunas da linha
     colunaId.innerHTML = objeto.id;
     colunaCor.innerHTML = objeto.cor;
     colunaPlaca.innerHTML = objeto.placa;
     colunaVelocidade.innerHTML = objeto.velocidademax + " Km/h";
     colunaEstacionamento.innerHTML = objeto.estacionamento.nome;
+
+    //Injetando opções CRUD na linha do objeto;
+    optionAtualizar.setAttribute("title","Atualizar carro");
+    const classesAtualizar = ["fa-solid", "fa-pencil"];
+    classesAtualizar.forEach(cls => optionAtualizar.classList.add(cls));
+
+    optionVisualizar.setAttribute("title","Visualizar carro");
+    const classesVisualizar = ["fa-solid", "fa-eye"];
+    classesVisualizar.forEach(cls => optionVisualizar.classList.add(cls));
+
+    optionRemover.setAttribute("title","Remover carro");
+    const classesRemover = ["fa-solid", "fa-x"];
+    classesRemover.forEach(cls => optionRemover.classList.add(cls));
+
+    colunaOptions.appendChild(optionAtualizar);
+    colunaOptions.appendChild(optionVisualizar);
+    colunaOptions.appendChild(optionRemover);
 
     //Colocando as colunas dentro da linha
     linha.appendChild(colunaId);
@@ -106,6 +132,7 @@ function criaLinhaTabela(objeto) {
     linha.appendChild(colunaPlaca);
     linha.appendChild(colunaVelocidade);
     linha.appendChild(colunaEstacionamento);
+    linha.appendChild(colunaOptions);
 
     return linha;
 }
