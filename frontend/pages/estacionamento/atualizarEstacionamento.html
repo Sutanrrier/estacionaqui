@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="navbar">
+    <header class="navbar">
         <a href="/frontend/index.html">Página Inicial</a>
         <div class="dropdown">
             <button class="dropbtn">Carros</button>
@@ -39,33 +39,27 @@
                 <a href="/frontend/pages/estacionamento/apagarEstacionamento.html">Apagar estacionamento do sistema</a>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div>
-        <div id="header">
-            <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
-            <h1 id="description">Atualizar Informação de Estacionamento</h1>
-            <p>Preencha o formulário abaixo para atualizar as informações do seu estacionamento!</p>
-            <hr />
-        </div>
+    <section id="header">
+        <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
+        <h1 id="description">Atualizar Informação de Estacionamento</h1>
+        <p>Preencha o formulário abaixo para atualizar as informações do seu estacionamento!</p>
+        <hr />
+    </section>
 
-        <div>
-            <form onsubmit="atualizarEstacionamento()" id="formularioEstacionamento">
-                <label for="id">Id: </label>
-                <input id="id" type="number" name="id" placeholder="Id do seu Estacionamento" required />
+    <section class="formularioPaginas">
+        <form onsubmit="atualizarEstacionamento()" id="formularioEstacionamento">
+            <label for="id">Id: </label>
+            <input id="id" type="number" name="id" placeholder="Id do seu Estacionamento" required />
 
-                <label for="nome">Nome: </label>
-                <input id="nome" type="text" name="nome" placeholder="Novo nome do seu estacionamento" required />
+            <label for="nome">Nome: </label>
+            <input id="nome" type="text" name="nome" placeholder="Novo nome do seu estacionamento" required />
 
-                <br />
-                <button type="submit">Atualizar</button>
-            </form>
-        </div>
-    </div>
-
-    <footer>
-        <p>Desafio Sprint 9 - Pablo Ryan - 2022</p>
-    </footer>
+            <br />
+            <button type="submit">Atualizar</button>
+        </form>
+    </section>
 </body>
 
 </html>

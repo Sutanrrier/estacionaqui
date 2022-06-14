@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="navbar">
+    <header class="navbar">
         <a href="/frontend/index.html">Página Inicial</a>
         <div class="dropdown">
             <button class="dropbtn">Carros</button>
@@ -39,29 +39,23 @@
                 <a href="/frontend/pages/estacionamento/apagarEstacionamento.html">Apagar estacionamento do sistema</a>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div>
-        <div id="header">
-            <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
-            <h1 id="description">Cadastro de Estacionamento</h1>
-            <p>Preencha o formulário abaixo e adicione um novo estacionamento ao nosso banco!</p>
-            <hr />
-        </div>
+    <section id="header">
+        <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
+        <h1 id="description">Cadastro de Estacionamento</h1>
+        <p>Preencha o formulário abaixo e adicione um novo estacionamento ao nosso banco!</p>
+        <hr />
+    </section>
 
-        <div>
-            <form onsubmit="salvarEstacionamento()" id="formularioEstacionamento">
-                <label for="placa">Nome: </label>
-                <input id="nome" type="text" name="nome" placeholder="Nome do estacionamento" required />
-                <br />
-                <button type="submit">Cadastrar</button>
-            </form>
-        </div>
-    </div>
-
-    <footer>
-        <p>Desafio Sprint 9 - Pablo Ryan - 2022</p>
-    </footer>
+    <section class="formularioPaginas">
+        <form onsubmit="salvarEstacionamento()" id="formularioEstacionamento">
+            <label for="placa">Nome: </label>
+            <input id="nome" type="text" name="nome" placeholder="Nome do estacionamento" required />
+            <br />
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
 </body>
 
 </html>

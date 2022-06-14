@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstacionAqui - Consulta</title>
+
+    <!--Meus CSS e JS-->
     <link rel="stylesheet" type="text/css" href="/frontend/css/style.css" />
     <script type="text/javascript" src="/frontend/js/estacionamentoRequests.js"></script>
-    <title>EstacionAqui - Consulta</title>
 </head>
 
 <body>
-    <div class="navbar">
+    <header class="navbar">
         <a href="/frontend/index.html">Página Inicial</a>
         <div class="dropdown">
             <button class="dropbtn">Carros</button>
@@ -37,28 +39,26 @@
                 <a href="/frontend/pages/estacionamento/apagarEstacionamento.html">Apagar estacionamento do sistema</a>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div id="header">
+    <section id="header">
         <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
         <h1 id="description">Consulta de Estacionamentos</h1>
         <p>Informe o ID do estacionamento que deseja procurar abaixo!</p>
         <hr />
-    </div>
+    </section>
 
-    <div class="secaoConsulta">
-        <input type="number" placeholder="ID do Estacionamento" name="idEstacionamento" id="idPesquisaEstacionamento"
-            required>
-        <button type="button" onclick="criarTabelaEstacionamentoId()">Pesquisar</button>
-    </div>
+    <section class="formularioPaginas">
+        <form onsubmit="">
+            <input type="number" placeholder="ID do Estacionamento" name="idEstacionamento"
+                id="idPesquisaEstacionamento" required>
+            <button type="button" onclick="criarTabelaEstacionamentoId()">Pesquisar</button>
+        </form>
+    </section>
 
-    <div>
+    <section>
         <table id="tabelaEstacionamentoId" class="tabelasConsulta"></table>
-    </div>
-
-    <footer>
-        <p>Desafio Sprint 9 - Pablo Ryan - 2022</p>
-    </footer>
+    </section>
 </body>
 
 </html>

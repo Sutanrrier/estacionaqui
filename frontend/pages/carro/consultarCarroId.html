@@ -49,19 +49,15 @@
     </section>
 
     <section class="formularioPaginas">
-        <form onsubmit="criarTabelaCarroId()">
+        <form onsubmit="">
             <input type="number" placeholder="ID do veículo" name="idCarro" id="idPesquisaCarro" required>
-            <button type="submit">Pesquisar</button>
+            <button type="button" onclick="criarTabelaCarroId()">Pesquisar</button>
         </form>
     </section>
   
     <section>
         <table id="tabelaCarroId" class="tabelasConsulta"></table>
     </section>
-
-    <footer>
-        <p>Desafio Sprint 9 - Pablo Ryan - 2022</p>
-    </footer>
 </body>
 
 </html>
