@@ -29,6 +29,7 @@ function criarSelectCarro() {
             }))));
 }
 
+//Função para passar a próxima página da tabela
 function proximaPagina() {
     if(paginaAtual < paginaFinal){
         let tabela = document.getElementById("tabelaCarros");
@@ -41,6 +42,7 @@ function proximaPagina() {
     }
 }
 
+//Função para voltar a página anterior da tabela
 function anteriorPagina() {
     if(paginaAtual > 1){
         let tabela = document.getElementById("tabelaCarros");
@@ -145,13 +147,6 @@ function criarTabelaCarroId() {
     const tabela = document.getElementById("tabelaCarroId");
     const idCarro = document.getElementById("idPesquisaCarro").value;
 
-    //Checa se existe filhos na tabela e caso exista, remove todos os filhos dela.
-    const childrensTabela = tabela.childNodes;
-    if (childrensTabela.length > 1) {
-        tabela.removeChild(childrensTabela[1]);
-        tabela.removeChild(childrensTabela[1]);
-    }
-
     const cabecalho = criaCabecalhoTabela();
     tabela.appendChild(cabecalho);
 
@@ -167,11 +162,7 @@ function criarTabelaCarroId() {
             .then(data => {
                 let linha = criaLinhaTabela(data);
                 tabela.appendChild(linha)
-            }))
-        .catch(e => {
-            alert("Carro não encontrado no banco de dados!");
-            tabela.removeChild(childrensTabela[1]);
-        });
+            }));
 
 }
 

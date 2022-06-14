@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="navbar">
+    <header class="navbar">
         <a href="/frontend/index.html">Página Inicial</a>
         <div class="dropdown">
             <button class="dropbtn">Carros</button>
@@ -37,20 +37,28 @@
                 <a href="/frontend/pages/estacionamento/apagarEstacionamento.html">Apagar estacionamento do sistema</a>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div id="header">
+    <section id="header">
         <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
         <h1 id="description">Consulta de Estacionamentos</h1>
         <p>Confira nossa base de dados de estacionamentos cadastrados!</p>
         <hr />
-    </div>
+    </section>
 
-    <div>
-        <table id="tabelaEstacionamento" class="tabelasConsulta">
-            <script>criarTabelaEstacionamento()</script>
-        </table>
-    </div>
+    <section>
+        <div>
+            <table id="tabelaEstacionamento" class="tabelasConsulta">
+                <script>criarTabelaEstacionamento()</script>
+            </table>
+        </div>
+        
+        <div id="paginacao">
+            <button id="pagAnterior" onclick="anteriorPagina()">ANTERIOR</button>
+            <span id="pagSpan">Página #<span id="numeroPagina">1</span></span>
+            <button id="pagProximo" onclick="proximaPagina()">PRÓXIMO</button>
+        </div>
+    </section>
 
     <footer>
         <p>Desafio Sprint 9 - Pablo Ryan - 2022</p>

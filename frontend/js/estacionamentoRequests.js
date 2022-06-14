@@ -2,6 +2,11 @@
 const myHeaders = new Headers();
 myHeaders.append("Content-type", "application/json; charset=UTF-8");
 
+let paginaAtual = 1;
+let paginaFinal = paginaAtual+1;
+
+const linhasPorPagina = 5; //Define quantas linhas haverá por página de consulta
+
 //Cria o cabeçalho da tabela
 function criaCabecalhoTabela() {
     const linha = document.createElement("tr");
@@ -40,12 +45,34 @@ function criaLinhaTabela(objeto) {
     return linha;
 }
 
+//Função para passar a próxima página da tabela
+function proximaPagina() {
+    if(paginaAtual < paginaFinal){
+        let tabela = document.getElementById("tabelaEstacionamento");
+        tabela.innerText = "";
+        let pagina = document.getElementById("numeroPagina").innerText;
+        paginaAtual = parseInt(pagina) + 1;
+        paginaFinal = paginaAtual + 1;
+        document.getElementById("numeroPagina").innerText = paginaAtual;
+        criarTabelaEstacionamento();
+    }
+}
+
+//Função para voltar a página anterior da tabela
+function anteriorPagina() {
+    if(paginaAtual > 1){
+        let tabela = document.getElementById("tabelaEstacionamento");
+        tabela.innerText = "";
+        let pagina = document.getElementById("numeroPagina").innerText;
+        paginaAtual = parseInt(pagina) - 1;
+        document.getElementById("numeroPagina").innerText = paginaAtual;
+        criarTabelaEstacionamento();
+    }
+}
+
 //GET - Retorna todos os estacionamentos dentro do banco e gera uma tabela com o JSON de resposta
 function criarTabelaEstacionamento() {
     const tabela = document.getElementById("tabelaEstacionamento");
-
-    const cabecalho = criaCabecalhoTabela();
-    tabela.appendChild(cabecalho);
 
     const url = "http://localhost:8080/estacionamentos"
     const options = {
@@ -56,27 +83,29 @@ function criarTabelaEstacionamento() {
 
     fetch(url, options)
         .then(response => response.json()
-            .then(data => (data.forEach(element => {
-                let linha = criaLinhaTabela(element);
-                tabela.appendChild(linha);
-            }))));
+            .then(data => {
+                const cabecalho = criaCabecalhoTabela();
+                tabela.appendChild(cabecalho);
+
+                let maxLinhas = paginaAtual * linhasPorPagina;
+
+                for (let i = (paginaAtual * linhasPorPagina) - linhasPorPagina; i < maxLinhas; i++) {
+                    if(data[i] != null){
+                        const linha = criaLinhaTabela(data[i]);
+                        tabela.appendChild(linha);
+                    } 
+                    else{
+                        paginaFinal = paginaAtual;
+                        break;
+                    }
+                }
+            }));
 }
 
 //GET - Retorna um estacionamento dentro do banco a partir de um ID e gera uma tabela com o JSON de resposta
 function criarTabelaEstacionamentoId() {
     const tabela = document.getElementById("tabelaEstacionamentoId");
     const idEstacionamento = document.getElementById("idPesquisaEstacionamento").value;
-
-    //Checa se existe filhos na tabela e caso exista, remove todos os filhos dela.
-    const childrensTabela = tabela.childNodes;
-
-    if (childrensTabela.length > 1) {
-        tabela.removeChild(childrensTabela[1]);
-        tabela.removeChild(childrensTabela[1]);
-    }
-
-    const cabecalho = criaCabecalhoTabela();
-    tabela.appendChild(cabecalho);
 
     const url = `http://localhost:8080/estacionamentos/${idEstacionamento}`;
     const options = {
@@ -90,11 +119,7 @@ function criarTabelaEstacionamentoId() {
             .then(data => {
                 let linha = criaLinhaTabela(data);
                 tabela.appendChild(linha)
-            }))
-        .catch(e => {
-            alert("Estacionamento não encontrado no banco de dados!");
-            tabela.removeChild(childrensTabela[1]);
-        });
+            }));
 
 }
 
