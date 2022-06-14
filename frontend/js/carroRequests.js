@@ -97,11 +97,11 @@ function criaLinhaTabela(objeto) {
     let colunaEstacionamento = document.createElement("td");
 
     let colunaOptions = document.createElement("td");
-    
+
     let optionAtualizar = document.createElement("button");
     let optionVisualizar = document.createElement("button");
     let optionRemover = document.createElement("button");
-    
+
     //Injetando informação do objeto nas colunas da linha
     colunaId.innerHTML = objeto.id;
     colunaCor.innerHTML = objeto.cor;
@@ -109,17 +109,22 @@ function criaLinhaTabela(objeto) {
     colunaVelocidade.innerHTML = objeto.velocidademax + " Km/h";
     colunaEstacionamento.innerHTML = objeto.estacionamento.nome;
 
-    //Injetando opções CRUD na linha do objeto;
-    optionAtualizar.setAttribute("title","Atualizar carro");
+    //Criando botão de Atualizar carros
+    optionAtualizar.setAttribute("title", "Atualizar carro");
+    optionAtualizar.setAttribute("onclick", "window.location.href = 'http://127.0.0.1:5500/frontend/pages/carro/atualizarCarro.html'");
     const classesAtualizar = ["fa-solid", "fa-pencil"];
     classesAtualizar.forEach(cls => optionAtualizar.classList.add(cls));
 
-    optionVisualizar.setAttribute("title","Visualizar carro");
+    //Criando botão de Visualizar carros
+    optionVisualizar.setAttribute("title", "Visualizar carro");
+    optionVisualizar.setAttribute("onclick", "window.location.href = 'http://127.0.0.1:5500/frontend/pages/carro/consultarCarroId.html'");
     const classesVisualizar = ["fa-solid", "fa-eye"];
     classesVisualizar.forEach(cls => optionVisualizar.classList.add(cls));
 
-    optionRemover.setAttribute("title","Remover carro");
-    const classesRemover = ["fa-solid", "fa-x"];
+    //Criando botão de Remover carros
+    optionRemover.setAttribute("title", "Remover carro");
+    optionRemover.setAttribute("onclick", "window.location.href = 'http://127.0.0.1:5500/frontend/pages/carro/apagarCarro.html'");
+    const classesRemover = ["fa-solid", "fa-trash"];
     classesRemover.forEach(cls => optionRemover.classList.add(cls));
 
     colunaOptions.appendChild(optionAtualizar);
