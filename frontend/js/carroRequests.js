@@ -230,9 +230,11 @@ function salvarCarro() {
     }
 
     fetch(url, options)
-        .then(response => {
-            (response.status == "201") ? alert("Carro cadastrado com sucesso!") : alert("Ocorreu um erro!");
+        .then(() => {
+            alert("Carro cadastrado com sucesso!")
+            window.location.replace("http://127.0.0.1:5500/frontend/index.html");
         })
+        .catch(() => alert("Ocorreu um erro inesperado!"));
 }
 
 //PUT - Gera um JSON com os campos do formulario e envia como body da requisição para atualizar um carro por seu Id
@@ -272,7 +274,6 @@ function atualizarCarro() {
 //DELETE - Apaga um carro dentro do banco apartir de um ID
 function apagarCarro() {
     const idCarro = sessionStorage.getItem("idCarroAtual");
-    document.getElementById("idPesquisaCarro").value = idCarro;
 
     const url = `http://localhost:8080/carros/${idCarro}`;
     const options = {
@@ -282,7 +283,10 @@ function apagarCarro() {
     }
 
     fetch(url, options)
-        .then(() => alert("Carro apagado com sucesso!"))
+        .then(() => {
+            alert("Carro apagado com sucesso!");
+            window.location.replace("http://127.0.0.1:5500/frontend/pages/carro/consultaCarros.html");
+        })
         .catch(() => alert("Erro! -> Este ID não existe no banco de dados."));
 }
 
