@@ -110,21 +110,21 @@ function criaLinhaTabela(objeto) {
     colunaEstacionamento.innerHTML = objeto.estacionamento.nome;
 
     //Criando botão de Atualizar carros
-    optionAtualizar.setAttribute("title", "Atualizar carro");
-    optionAtualizar.setAttribute("onclick", "window.location.href = 'http://127.0.0.1:5500/frontend/pages/carro/atualizarCarro.html'");
     const classesAtualizar = ["fa-solid", "fa-pencil"];
+    optionAtualizar.setAttribute("title", "Atualizar carro");
+    optionAtualizar.setAttribute("onclick", `opcaoAtualizar(${objeto.id})`);
     classesAtualizar.forEach(cls => optionAtualizar.classList.add(cls));
 
     //Criando botão de Visualizar carros
-    optionVisualizar.setAttribute("title", "Visualizar carro");
-    optionVisualizar.setAttribute("onclick", "window.location.href = 'http://127.0.0.1:5500/frontend/pages/carro/consultarCarroId.html'");
     const classesVisualizar = ["fa-solid", "fa-eye"];
+    optionVisualizar.setAttribute("title", "Visualizar carro");
+    optionVisualizar.setAttribute("onclick", `opcaoVisualizar(${objeto.id})`);
     classesVisualizar.forEach(cls => optionVisualizar.classList.add(cls));
 
     //Criando botão de Remover carros
-    optionRemover.setAttribute("title", "Remover carro");
-    optionRemover.setAttribute("onclick", "window.location.href = 'http://127.0.0.1:5500/frontend/pages/carro/apagarCarro.html'");
     const classesRemover = ["fa-solid", "fa-trash"];
+    optionRemover.setAttribute("title", "Remover carro");
+    optionRemover.setAttribute("onclick", `opcaoRemover(${objeto.id})`);
     classesRemover.forEach(cls => optionRemover.classList.add(cls));
 
     colunaOptions.appendChild(optionAtualizar);
@@ -282,4 +282,22 @@ function apagarCarro() {
         .then(response => {
             (response.ok) ? alert("Carro removido com sucesso!") : alert("Erro! -> Este ID não existe no banco!");
         })
+}
+
+//Função do botão Editar, redirecionando o usuário para a página de Atualizar Carro
+function opcaoAtualizar(id) {
+    sessionStorage.setItem("idCarroAtual", id);
+    window.location.assign("http://127.0.0.1:5500/frontend/pages/carro/atualizarCarro.html");
+}
+
+//Função do botão Visualizar, redirecionando o usuário para a página de Atualizar Carro
+function opcaoVisualizar(id) {
+    sessionStorage.setItem("idCarroAtual", id);
+    window.location.assign("http://127.0.0.1:5500/frontend/pages/carro/consultarCarroId.html");
+}
+
+//Função do botão Remover, redirecionando o usuário para a página de Atualizar Carro
+function opcaoRemover(id) {
+    sessionStorage.setItem("idCarroAtual", id);
+    window.location.assign("http://127.0.0.1:5500/frontend/pages/carro/apagarCarro.html");
 }

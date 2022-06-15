@@ -84,6 +84,7 @@
 .tabelasConsulta td,
 .tabelasConsulta th {
   border: 1px solid black;
+  background-color: whitesmoke;
 }
 .tabelasConsulta th {
   background-color: lightcyan;
