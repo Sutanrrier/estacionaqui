@@ -237,7 +237,7 @@ function salvarCarro() {
 
 //PUT - Gera um JSON com os campos do formulario e envia como body da requisição para atualizar um carro por seu Id
 function atualizarCarro() {
-    const id = document.getElementById("id").value;
+    const id = sessionStorage.getItem("idCarroAtual");
     const cor = document.getElementById("cor").value;
     const placa = document.getElementById("placa").value;
     const velocidademax = document.getElementById("velocidademax").value;
@@ -262,9 +262,11 @@ function atualizarCarro() {
     }
 
     fetch(url, options)
-        .then(response => {
-            (response.status == "201") ? alert("Carro atualizado com sucesso!") : alert("Erro! -> Este ID não existe no banco!");
+        .then(() => {
+            alert("Carro atualizado com sucesso!");
+            window.location.replace("http://127.0.0.1:5500/frontend/pages/carro/consultaCarros.html");
         })
+        .catch(() => alert("Um erro inesperado ocorreu"));
 }
 
 //DELETE - Apaga um carro dentro do banco apartir de um ID

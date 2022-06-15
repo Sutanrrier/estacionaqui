@@ -21,7 +21,6 @@
                 <a href="/frontend/pages/carro/cadastrarCarro.html">Cadastrar carro</a>
                 <a href="/frontend/pages/carro/consultaCarros.html">Consultar carros cadastrados</a>
                 <a href="/frontend/pages/carro/consultarCarroId.html">Consultar carro por ID</a>
-                <a href="/frontend/pages/carro/atualizarCarro.html">Atualizar carro do sistema</a>
                 <a href="/frontend/pages/carro/apagarCarro.html">Apagar carro do sistema</a>
             </div>
         </div>
@@ -43,16 +42,13 @@
 
     <section id="header">
         <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
-        <h1 id="description">Atualizar Informação de Veículo</h1>
-        <p>Preencha o formulário abaixo para atualizar as informações do seu carro!</p>
+        <h1 id="description">Atualizar Veículo</h1>
+        <p>Preencha o formulário abaixo para atualizar as informações deste carro!</p>
         <hr />
     </section>
 
     <section class="formularioPaginas">
         <form onsubmit="atualizarCarro()" id="formularioCarro">
-            <label for="id">Id: </label>
-            <input id="id" type="number" name="id" placeholder="Id do seu carro" readonly="readonly" />
-
             <label for="cor">Cor: </label>
             <input id="cor" type="text" name="cor" placeholder="Nova cor do seu carro" required />
 
