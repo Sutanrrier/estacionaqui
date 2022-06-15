@@ -167,7 +167,7 @@
 
 #tabelaEstacionamento,
 #tabelaEstacionamentoId {
-  width: 30% !important;
+  width: 50% !important;
 }
 
 #logo {
@@ -188,6 +188,24 @@
   margin-left: auto;
   margin-right: auto;
   padding: 1%;
+}
+
+
+/*Estilo da página de apagar véiculos*/
+#removerCarro {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#removerCarro button{
+  width: 25%;
+  font-size: 1em;
+  padding: 1em;
+}
+#removerCarro button:hover{
+  background-color: firebrick;
+  cursor: pointer;
 }
 
 /* Tags globais */

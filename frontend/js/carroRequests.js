@@ -271,7 +271,8 @@ function atualizarCarro() {
 
 //DELETE - Apaga um carro dentro do banco apartir de um ID
 function apagarCarro() {
-    const idCarro = document.getElementById("idPesquisaCarro").value;
+    const idCarro = sessionStorage.getItem("idCarroAtual");
+    document.getElementById("idPesquisaCarro").value = idCarro;
 
     const url = `http://localhost:8080/carros/${idCarro}`;
     const options = {
@@ -281,9 +282,8 @@ function apagarCarro() {
     }
 
     fetch(url, options)
-        .then(response => {
-            (response.ok) ? alert("Carro removido com sucesso!") : alert("Erro! -> Este ID não existe no banco!");
-        })
+        .then(() => alert("Carro apagado com sucesso!"))
+        .catch(() => alert("Erro! -> Este ID não existe no banco de dados."));
 }
 
 //Função do botão Editar, redirecionando o usuário para a página de Atualizar Carro
