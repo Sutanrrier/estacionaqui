@@ -176,7 +176,7 @@ function criarTabelaCarro() {
 
 //GET - Retorna um carro dentro do banco a partir de um ID e gera uma tabela com o JSON de resposta
 function criarTabelaCarroId() {
-    const tabela = document.getElementById("tabelaCarroId");
+    const tabela = document.getElementById("tabelaCarros");
     tabela.innerText = "";
 
     const idCarro = document.getElementById("idPesquisaCarro").value;
