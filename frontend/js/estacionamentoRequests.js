@@ -3,51 +3,13 @@ const myHeaders = new Headers();
 myHeaders.append("Content-type", "application/json; charset=UTF-8");
 
 let paginaAtual = 1;
-let paginaFinal = paginaAtual+1;
+let paginaFinal = paginaAtual + 1;
 
 const linhasPorPagina = 5; //Define quantas linhas haverá por página de consulta
 
-//Cria o cabeçalho da tabela
-function criaCabecalhoTabela() {
-    const linha = document.createElement("tr");
-
-    // Criando as colunas da linha
-    let colunaId = document.createElement("th");
-    let colunaNome = document.createElement("th");
-
-    //Injetando informação nas colunas da linha
-    colunaId.innerHTML = "ID";
-    colunaNome.innerHTML = "NOME";
-
-    //Colocando as colunas dentro da linha
-    linha.appendChild(colunaId);
-    linha.appendChild(colunaNome);
-
-    return linha;
-}
-
-//Cria uma linha para a tabela de consulta
-function criaLinhaTabela(objeto) {
-    let linha = document.createElement("tr");
-
-    // Criando as colunas da linha
-    let colunaId = document.createElement("td");
-    let colunaNome = document.createElement("td");
-
-    //Injetando informação nas colunas da linha
-    colunaId.innerHTML = objeto.id;
-    colunaNome.innerHTML = objeto.nome;
-
-    //Colocando as colunas dentro da linha
-    linha.appendChild(colunaId);
-    linha.appendChild(colunaNome);
-
-    return linha;
-}
-
 //Função para passar a próxima página da tabela
 function proximaPagina() {
-    if(paginaAtual < paginaFinal){
+    if (paginaAtual < paginaFinal) {
         let tabela = document.getElementById("tabelaEstacionamento");
         tabela.innerText = "";
         let pagina = document.getElementById("numeroPagina").innerText;
@@ -60,7 +22,7 @@ function proximaPagina() {
 
 //Função para voltar a página anterior da tabela
 function anteriorPagina() {
-    if(paginaAtual > 1){
+    if (paginaAtual > 1) {
         let tabela = document.getElementById("tabelaEstacionamento");
         tabela.innerText = "";
         let pagina = document.getElementById("numeroPagina").innerText;
@@ -68,6 +30,76 @@ function anteriorPagina() {
         document.getElementById("numeroPagina").innerText = paginaAtual;
         criarTabelaEstacionamento();
     }
+}
+
+//Cria o cabeçalho da tabela
+function criaCabecalhoTabela() {
+    const linha = document.createElement("tr");
+
+    // Criando as colunas da linha
+    let colunaId = document.createElement("th");
+    let colunaNome = document.createElement("th");
+    let colunaOptions = document.createElement("th");
+
+    //Injetando informação nas colunas da linha
+    colunaId.innerHTML = "ID";
+    colunaNome.innerHTML = "NOME";
+    colunaOptions.innerHTML = "OPÇÕES";
+
+    //Colocando as colunas dentro da linha
+    linha.appendChild(colunaId);
+    linha.appendChild(colunaNome);
+    linha.appendChild(colunaOptions);
+
+    return linha;
+}
+
+//Cria uma linha para a tabela de consulta
+function criaLinhaTabela(objeto) {
+    let linha = document.createElement("tr");
+
+    // Criando as colunas da linha
+    let colunaId = document.createElement("td");
+    let colunaNome = document.createElement("td");
+
+    let colunaOptions = document.createElement("td");
+
+    let optionAtualizar = document.createElement("button");
+    let optionVisualizar = document.createElement("button");
+    let optionRemover = document.createElement("button");
+
+    //Injetando informação nas colunas da linha
+    colunaId.innerHTML = objeto.id;
+    colunaNome.innerHTML = objeto.nome;
+
+    //Criando botão de Atualizar carros
+    const classesAtualizar = ["fa-solid", "fa-pencil"];
+    optionAtualizar.setAttribute("title", "Atualizar carro");
+    optionAtualizar.setAttribute("onclick", `opcaoAtualizar(${objeto.id})`);
+    classesAtualizar.forEach(cls => optionAtualizar.classList.add(cls));
+
+    //Criando botão de Visualizar carros
+    const classesVisualizar = ["fa-solid", "fa-eye"];
+    optionVisualizar.setAttribute("title", "Visualizar carro");
+    optionVisualizar.setAttribute("onclick", `opcaoVisualizar(${objeto.id})`);
+    classesVisualizar.forEach(cls => optionVisualizar.classList.add(cls));
+
+    //Criando botão de Remover carros
+    const classesRemover = ["fa-solid", "fa-trash"];
+    optionRemover.setAttribute("title", "Remover carro");
+    optionRemover.setAttribute("onclick", `opcaoRemover(${objeto.id})`);
+    classesRemover.forEach(cls => optionRemover.classList.add(cls));
+
+    colunaOptions.appendChild(optionAtualizar);
+    colunaOptions.appendChild(optionVisualizar);
+    colunaOptions.appendChild(optionRemover);
+
+    //Colocando as colunas dentro da linha
+    linha.appendChild(colunaId);
+    linha.appendChild(colunaNome);
+    linha.appendChild(colunaOptions);
+
+    return linha;
 }
 
 //GET - Retorna todos os estacionamentos dentro do banco e gera uma tabela com o JSON de resposta
@@ -90,11 +122,11 @@ function criarTabelaEstacionamento() {
                 let maxLinhas = paginaAtual * linhasPorPagina;
 
                 for (let i = (paginaAtual * linhasPorPagina) - linhasPorPagina; i < maxLinhas; i++) {
-                    if(data[i] != null){
+                    if (data[i] != null) {
                         const linha = criaLinhaTabela(data[i]);
                         tabela.appendChild(linha);
-                    } 
-                    else{
+                    }
+                    else {
                         paginaFinal = paginaAtual;
                         break;
                     }
@@ -184,4 +216,22 @@ function apagarEstacionamento() {
         .then(response => {
             (response.ok) ? alert("Estacionamento removido com sucesso!") : alert("Erro! -> Este ID não existe ou não pode ser removido do banco!");
         })
+}
+
+//Função do botão Editar, redirecionando o usuário para a página de Atualizar Carro
+function opcaoAtualizar(id) {
+    sessionStorage.setItem("idEstacionamentoAtual", id);
+    window.location.assign("http://127.0.0.1:5500/frontend/pages/estacionamento/atualizarEstacionamento.html");
+}
+
+//Função do botão Visualizar, redirecionando o usuário para a página de Atualizar Carro
+function opcaoVisualizar(id) {
+    sessionStorage.setItem("idEstacionamentoAtual", id);
+    window.location.assign("http://127.0.0.1:5500/frontend/pages/estacionamento/visualizarEstacionamento.html");
+}
+
+//Função do botão Remover, redirecionando o usuário para a página de Atualizar Carro
+function opcaoRemover(id) {
+    sessionStorage.setItem("idEstacionamentoAtual", id);
+    window.location.assign("http://127.0.0.1:5500/frontend/pages/estacionamento/apagarEstacionamento.html");
 }
