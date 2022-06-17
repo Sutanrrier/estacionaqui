@@ -172,9 +172,8 @@ function salvarEstacionamento() {
     }
 
     fetch(url, options)
-        .then(response => {
-            (response.status == "201") ? alert("Estacionamento cadastrado com sucesso!") : alert("Ocorreu um erro!");
-        })
+        .then(() => alert("Estacionamento cadastrado com sucesso!"))
+        .catch(() => alert("Ocorreu um erro!"));
 }
 
 //PUT - Gera um JSON e envia como body da requisição para atualizar um estacionamento por seu Id
