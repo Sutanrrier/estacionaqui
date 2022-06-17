@@ -205,6 +205,30 @@ function criarTabelaCarroId() {
     }
 }
 
+//GET - Retorna um carro dentro do banco a partir de um ID e gera um formulário com o JSON de resposta
+function visualizarCarro() {
+    const idCarro = sessionStorage.getItem("idCarroAtual");
+
+    const url = `http://localhost:8080/carros/${idCarro}`;
+    const options = {
+        method: "GET",
+        mode: "cors",
+        cache: "default"
+    }
+
+    fetch(url, options)
+        .then(response => response.json()
+            .then(data => {
+                document.getElementById("id").value = data.id;
+                document.getElementById("cor").value = data.cor;
+                document.getElementById("placa").value = data.placa;
+                document.getElementById("velocidademax").value = data.velocidademax;
+                document.getElementById("data").value = data.dataCriacao;
+                document.getElementById("estacionamento_id").value = data.estacionamento.nome;
+            }))
+        .catch(() => alert("Erro! -> Este ID não existe no banco de dados"));
+}
+
 //POST - Gera um JSON com os campos do formulario e envia como body da requisição para cadastrar um carro
 function salvarCarro() {
     const cor = document.getElementById("cor").value;
@@ -299,7 +323,7 @@ function opcaoAtualizar(id) {
 //Função do botão Visualizar, redirecionando o usuário para a página de Atualizar Carro
 function opcaoVisualizar(id) {
     sessionStorage.setItem("idCarroAtual", id);
-    window.location.assign("http://127.0.0.1:5500/frontend/pages/carro/consultarCarroId.html");
+    window.location.assign("http://127.0.0.1:5500/frontend/pages/carro/visualizarCarro.html");
 }
 
 //Função do botão Remover, redirecionando o usuário para a página de Atualizar Carro

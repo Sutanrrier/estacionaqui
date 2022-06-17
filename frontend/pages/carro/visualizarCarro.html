@@ -20,6 +20,7 @@
             <div class="dropdown-content">
                 <a href="/frontend/pages/carro/cadastrarCarro.html">Cadastrar carro</a>
                 <a href="/frontend/pages/carro/consultaCarros.html">Consultar carros cadastrados</a>
+                <a href="/frontend/pages/carro/consultarCarroId.html">Consultar carro por ID</a>
             </div>
         </div>
 
@@ -40,20 +41,32 @@
 
     <section id="header">
         <img src="/frontend/images/estacionAquiLogo.svg" alt="EstacionaAqui Logo" id="logo" />
-        <h1 id="description">Consulta de Veículos</h1>
-        <p>Informe o ID do veículo que deseja procurar abaixo!</p>
+        <h1 id="description">Visualizar Veículo</h1>
+        <p>Confira abaixo todas as informações deste veículo</p>
         <hr />
     </section>
 
     <section class="formularioPaginas">
-        <form onsubmit="">
-            <input type="number" placeholder="ID do veículo" name="idCarro" id="idPesquisaCarro" required>
-            <button type="button" onclick="criarTabelaCarroId()">Pesquisar</button>
+        <form onsubmit="" id="formularioCarro">
+            <label for="id">Id: </label>
+            <input id="id" type="numer" readonly="readonly" />
+
+            <label for="cor">Cor: </label>
+            <input id="cor" type="text" readonly="readonly" />
+
+            <label for="placa">Placa: </label>
+            <input id="placa" type="text" readonly="readonly" />
+
+            <label for="velocidademax">Velocidade Máxima: </label>
+            <input id="velocidademax" type="number" readonly="readonly" />
+
+            <label for="data">Adicionado em: </label>
+            <input id="data" type="date" readonly="readonly" />
+
+            <label for="estacionamento_id">Estacionado em:</label>
+            <input id="estacionamento_id" type="text" readonly="readonly" />
         </form>
-    </section>
-  
-    <section>
-        <table id="tabelaCarroId" class="tabelasConsulta"></table>
+        <script>visualizarCarro()</script>
     </section>
 </body>
 
