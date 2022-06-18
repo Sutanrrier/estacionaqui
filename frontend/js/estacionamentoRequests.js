@@ -172,13 +172,16 @@ function salvarEstacionamento() {
     }
 
     fetch(url, options)
-        .then(() => alert("Estacionamento cadastrado com sucesso!"))
+        .then(() => {
+            alert("Estacionamento cadastrado com sucesso!")
+            window.location.replace("http://127.0.0.1:5500/frontend/index.html");
+        })
         .catch(() => alert("Ocorreu um erro!"));
 }
 
 //PUT - Gera um JSON e envia como body da requisição para atualizar um estacionamento por seu Id
 function atualizarEstacionamento() {
-    const id = document.getElementById("id").value;
+    const id = sessionStorage.getItem("idEstacionamentoAtual");
     const nome = document.getElementById("nome").value;
 
     const url = `http://localhost:8080/estacionamentos/${id}`;
@@ -195,9 +198,11 @@ function atualizarEstacionamento() {
     }
 
     fetch(url, options)
-        .then(response => {
-            (response.status == "201") ? alert("Estacionamento atualizado com sucesso!") : alert("Erro! -> Este ID não existe no banco!");
+        .then(() => {
+            alert("Estacionamento atualizado com sucesso!");
+            window.location.replace("http://127.0.0.1:5500/frontend/pages/estacionamento/consultaEstacionamentos.html");
         })
+        .catch(() => alert("Erro! -> Este ID não existe no banco!"));
 }
 
 //DELETE - Apaga um carro dentro do banco apartir de um ID
