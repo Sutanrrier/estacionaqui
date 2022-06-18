@@ -207,7 +207,7 @@ function atualizarEstacionamento() {
 
 //DELETE - Apaga um carro dentro do banco apartir de um ID
 function apagarEstacionamento() {
-    const idEstacionamento = document.getElementById("idPesquisaEstacionamento").value;
+    const idEstacionamento = sessionStorage.getItem("idEstacionamentoAtual");
 
     const url = `http://localhost:8080/estacionamentos/${idEstacionamento}`;
     const options = {
@@ -217,9 +217,12 @@ function apagarEstacionamento() {
     }
 
     fetch(url, options)
-        .then(response => {
-            (response.ok) ? alert("Estacionamento removido com sucesso!") : alert("Erro! -> Este ID não existe ou não pode ser removido do banco!");
+        .then(() => {
+            alert("Estacionamento removido com sucesso!");
+            window.location.replace("http://127.0.0.1:5500/frontend/pages/estacionamento/consultaEstacionamentos.html");
         })
+        .catch(() => alert("Erro! -> Este ID não existe ou não pode ser removido do banco!"));
+
 }
 
 //Função do botão Editar, redirecionando o usuário para a página de Atualizar Carro
