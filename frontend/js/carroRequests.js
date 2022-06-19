@@ -3,7 +3,7 @@ const myHeaders = new Headers();
 myHeaders.append("Content-type", "application/json; charset=UTF-8");
 
 let paginaAtual = 1;
-let paginaFinal = paginaAtual + 1;
+let paginaFinal = sessionStorage.getItem("paginaFinalCarro");
 
 const linhasPorPagina = 5; //Define quantas linhas haverá por página de consulta
 
@@ -36,7 +36,6 @@ function proximaPagina() {
         tabela.innerText = "";
         let pagina = document.getElementById("numeroPagina").innerText;
         paginaAtual = parseInt(pagina) + 1;
-        paginaFinal = paginaAtual + 1;
         document.getElementById("numeroPagina").innerText = paginaAtual;
         criarTabelaCarro();
     }
@@ -159,16 +158,13 @@ function criarTabelaCarro() {
                 const cabecalho = criaCabecalhoTabela();
                 tabela.appendChild(cabecalho);
 
-                let maxLinhas = paginaAtual * linhasPorPagina;
+                sessionStorage.setItem("paginaFinalCarro", Math.ceil(data.length / linhasPorPagina));
+                const maxLinhas = paginaAtual * linhasPorPagina;
 
                 for (let i = (paginaAtual * linhasPorPagina) - linhasPorPagina; i < maxLinhas; i++) {
                     if (data[i] != null) {
                         const linha = criaLinhaTabela(data[i]);
                         tabela.appendChild(linha);
-                    }
-                    else {
-                        paginaFinal = paginaAtual;
-                        break;
                     }
                 }
             }));
@@ -309,7 +305,7 @@ function apagarCarro() {
     fetch(url, options)
         .then(() => {
             alert("Carro apagado com sucesso!");
-            window.location.replace("http://127.0.0.1:5500/frontend/pages/carro/consultaCarros.html");
+            window.location.replace("http://127.0.0.1:5500/frontend/index.html");
         })
         .catch(() => alert("Erro! -> Este ID não existe no banco de dados."));
 }

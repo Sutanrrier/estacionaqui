@@ -3,7 +3,7 @@ const myHeaders = new Headers();
 myHeaders.append("Content-type", "application/json; charset=UTF-8");
 
 let paginaAtual = 1;
-let paginaFinal = paginaAtual + 1;
+let paginaFinal = sessionStorage.getItem("paginaFinalEstacionamento");
 
 const linhasPorPagina = 5; //Define quantas linhas haverá por página de consulta
 
@@ -14,7 +14,6 @@ function proximaPagina() {
         tabela.innerText = "";
         let pagina = document.getElementById("numeroPagina").innerText;
         paginaAtual = parseInt(pagina) + 1;
-        paginaFinal = paginaAtual + 1;
         document.getElementById("numeroPagina").innerText = paginaAtual;
         criarTabelaEstacionamento();
     }
@@ -140,16 +139,13 @@ function criarTabelaEstacionamento() {
                 const cabecalho = criaCabecalhoTabela();
                 tabela.appendChild(cabecalho);
 
-                let maxLinhas = paginaAtual * linhasPorPagina;
+                sessionStorage.setItem("paginaFinalEstacionamento", Math.ceil(data.length / linhasPorPagina));
+                const maxLinhas = paginaAtual * linhasPorPagina;
 
                 for (let i = (paginaAtual * linhasPorPagina) - linhasPorPagina; i < maxLinhas; i++) {
                     if (data[i] != null) {
                         const linha = criaLinhaTabela(data[i]);
                         tabela.appendChild(linha);
-                    }
-                    else {
-                        paginaFinal = paginaAtual;
-                        break;
                     }
                 }
             }));
@@ -181,7 +177,7 @@ function criarTabelaEstacionamentoId() {
                 }))
             .catch(() => alert("Erro! -> Este ID não existe no banco de dados!"));
     }
-    else{
+    else {
         alert("Erro! -> ID não foi informado!");
     }
 }
@@ -249,11 +245,11 @@ function apagarEstacionamento() {
 
     fetch(url, options)
         .then((response) => {
-            if(response.status != 500){
+            if (response.status != 500) {
                 alert("Estacionamento removido com sucesso!");
-                window.location.replace("http://127.0.0.1:5500/frontend/pages/estacionamento/consultaEstacionamentos.html");
+                window.location.replace("http://127.0.0.1:5500/frontend/index.html");
             }
-            else{
+            else {
                 alert("Erro! -> Este estacionamento não pode ser removido do banco!")
             }
         })
