@@ -102,6 +102,27 @@ function criaLinhaTabela(objeto) {
     return linha;
 }
 
+//GET - Retorna um estacionamento dentro do banco a partir de um ID e gera um formulário com o JSON de resposta
+function visualizarEstacionamento() {
+    const idEstacionamento = sessionStorage.getItem("idEstacionamentoAtual");
+
+    const url = `http://localhost:8080/estacionamentos/${idEstacionamento}`;
+    const options = {
+        method: "GET",
+        mode: "cors",
+        cache: "default"
+    }
+
+    fetch(url, options)
+        .then(response => response.json()
+            .then(data => {
+                document.getElementById("id").value = data.id;
+                document.getElementById("nome").value = data.nome;
+                document.getElementById("data").value = data.dataCriacao;
+            }))
+        .catch(() => alert("Erro! -> Este ID não existe no banco de dados"));
+}
+
 //GET - Retorna todos os estacionamentos dentro do banco e gera uma tabela com o JSON de resposta
 function criarTabelaEstacionamento() {
     const tabela = document.getElementById("tabelaEstacionamento");
