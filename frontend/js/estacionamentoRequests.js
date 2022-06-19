@@ -158,22 +158,32 @@ function criarTabelaEstacionamento() {
 //GET - Retorna um estacionamento dentro do banco a partir de um ID e gera uma tabela com o JSON de resposta
 function criarTabelaEstacionamentoId() {
     const tabela = document.getElementById("tabelaEstacionamentoId");
+    tabela.innerText = "";
+
     const idEstacionamento = document.getElementById("idPesquisaEstacionamento").value;
 
-    const url = `http://localhost:8080/estacionamentos/${idEstacionamento}`;
-    const options = {
-        method: "GET",
-        mode: "cors",
-        cache: "default"
+    if (idEstacionamento != "") {
+        const url = `http://localhost:8080/estacionamentos/${idEstacionamento}`;
+        const options = {
+            method: "GET",
+            mode: "cors",
+            cache: "default"
+        }
+
+        fetch(url, options)
+            .then(response => response.json()
+                .then(data => {
+                    const cabecalho = criaCabecalhoTabela();
+                    tabela.appendChild(cabecalho);
+
+                    let linha = criaLinhaTabela(data);
+                    tabela.appendChild(linha)
+                }))
+            .catch(() => alert("Erro! -> Este ID não existe no banco de dados!"));
     }
-
-    fetch(url, options)
-        .then(response => response.json()
-            .then(data => {
-                let linha = criaLinhaTabela(data);
-                tabela.appendChild(linha)
-            }));
-
+    else{
+        alert("Erro! -> ID não foi informado!");
+    }
 }
 
 //POST - Gera um JSON e envia como body da requisição para cadastrar um estacionamento
