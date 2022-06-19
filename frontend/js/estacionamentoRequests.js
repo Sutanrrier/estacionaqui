@@ -248,11 +248,16 @@ function apagarEstacionamento() {
     }
 
     fetch(url, options)
-        .then(() => {
-            alert("Estacionamento removido com sucesso!");
-            window.location.replace("http://127.0.0.1:5500/frontend/pages/estacionamento/consultaEstacionamentos.html");
+        .then((response) => {
+            if(response.status != 500){
+                alert("Estacionamento removido com sucesso!");
+                window.location.replace("http://127.0.0.1:5500/frontend/pages/estacionamento/consultaEstacionamentos.html");
+            }
+            else{
+                alert("Erro! -> Este estacionamento não pode ser removido do banco!")
+            }
         })
-        .catch(() => alert("Erro! -> Este ID não existe ou não pode ser removido do banco!"));
+        .catch(() => alert("Um erro inesperado ocorreu!"));
 
 }
 
